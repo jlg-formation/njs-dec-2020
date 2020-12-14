@@ -5,6 +5,11 @@ const app = express();
 const port = 3000;
 const www = "public";
 
+app.use((req, rep, next) => {
+  console.log("req.url: ", req.url);
+  next();
+});
+
 app.use(express.static(www));
 app.use(serveIndex(www));
 
