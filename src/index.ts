@@ -10,6 +10,10 @@ app.use((req, rep, next) => {
   next();
 });
 
+app.get('/ws/date', (req, res) => {
+  res.json({date: new Date()});
+});
+
 app.use(express.static(www));
 app.use(serveIndex(www));
 
