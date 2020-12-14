@@ -1,12 +1,12 @@
-import express from "express";
-import serveIndex from "serve-index";
+import express from 'express';
+import serveIndex from 'serve-index';
 
 const app = express();
 const port = 3000;
-const www = "public";
+const www = 'public';
 
 app.use((req, rep, next) => {
-  console.log("req.url: ", req.url);
+  console.log('req.url: ', req.url);
   next();
 });
 
