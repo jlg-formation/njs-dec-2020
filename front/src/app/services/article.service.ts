@@ -11,4 +11,8 @@ export class ArticleService {
   ];
 
   constructor() {}
+
+  add(article: Article): void {
+    this.articles.push(article);
+  }
 }
