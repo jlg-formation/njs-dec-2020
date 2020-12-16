@@ -17,7 +17,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let article of articleService.articles$ | async">
+        <tr
+          (click)="toggle(article)"
+          [class.selected]="selectedArticles.includes(article)"
+          *ngFor="let article of articleService.articles$ | async"
+        >
           <td class="name" [title]="article.name">
             {{ article.name | ellipsis: 13 }}
           </td>
