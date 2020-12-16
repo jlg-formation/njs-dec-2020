@@ -3,7 +3,9 @@
   <div class="content">
     <nav>
       <button routerLink="create">Ajouter</button>
-      <button>Supprimer</button>
+      <button [hidden]="selectedArticles.length === 0" (click)="remove()">
+        Supprimer
+      </button>
     </nav>
     <table>
       <caption hidden>

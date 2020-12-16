@@ -29,4 +29,11 @@ export class ArticleService {
     this.articles$.value.push(article);
     this.articles$.next(this.articles$.value);
   }
+
+  remove(selectedArticles: Article[]): void {
+    const articles = this.articles$.value.filter(
+      (a) => !selectedArticles.includes(a)
+    );
+    this.articles$.next(articles);
+  }
 }
