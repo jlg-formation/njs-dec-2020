@@ -18,7 +18,9 @@
       </thead>
       <tbody>
         <tr *ngFor="let article of articleService.articles">
-          <td class="name" title="Tournevis">{{ article.name }}</td>
+          <td class="name" [title]="article.name">
+            {{ article.name | ellipsis: 13 }}
+          </td>
           <td class="price">{{ article.price }}€</td>
           <td class="qty">{{ article.qty }}</td>
         </tr>
