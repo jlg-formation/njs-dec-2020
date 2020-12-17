@@ -10,6 +10,8 @@ let nextId = 3;
 
 const app = express.Router();
 
+app.use(express.json());
+
 app.get('/articles', (req, res) => {
   res.json(articles);
 });
