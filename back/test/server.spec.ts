@@ -26,6 +26,34 @@ describe('Web Service date', () => {
     assert(json);
   });
 
+  it('should add one article', async () => {
+    const response = await fetch('http://localhost:3000/ws/articles', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: 'Marteau',
+        price: 2.99,
+        qty: 100,
+      }),
+    });
+    const json = await response.json();
+    assert.deepStrictEqual(response.status, 201);
+    assert(json);
+  });
+
+  it('should delete one article', async () => {
+    const response = await fetch('http://localhost:3000/ws/articles', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify([123]),
+    });
+    assert.deepStrictEqual(response.status, 204);
+  });
+
   after(async () => {
     await server.stop();
   });
