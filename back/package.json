@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "bin": "./build/src/index.js",
   "scripts": {
-    "bin": "./build/src/index.js",
     "test": "mocha",
     "lint": "gts lint",
     "clean": "gts clean",
@@ -13,7 +13,8 @@
     "prepare": "npm.cmd run compile",
     "pretest": "npm.cmd run compile",
     "posttest": "npm.cmd run lint",
-    "start": "npx nodemon src/index.ts"
+    "start": "npx nodemon src/index.ts",
+    "build:exe": "npx pkg --out-path pkg ."
   },
   "keywords": [],
   "author": "",
