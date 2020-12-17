@@ -1,0 +1,9 @@
+{
+  "db1": {
+    "user": "postgres",
+    "host": "localhost",
+    "database": "sidel",
+    "password": "xxxxxx",
+    "port": 5432
+  }
+}
