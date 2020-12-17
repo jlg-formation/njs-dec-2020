@@ -11,6 +11,14 @@ async function main() {
 
   try {
     const res = await client.query(text, values);
+
+    const ids = [4, 5, 6];
+    await client.query(
+      `DELETE FROM articles WHERE id in (${ids
+        .map((n, i) => '$' + (i + 1))
+        .join(',')})`,
+      ids
+    );
     console.log(res.rows[0]);
   } catch (err) {
     console.log(err.stack);
