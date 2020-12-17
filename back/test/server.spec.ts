@@ -19,6 +19,13 @@ describe('Web Service date', () => {
     assert.strictEqual(date.getFullYear(), now.getFullYear());
   });
 
+  it('should return the list of articles', async () => {
+    const response = await fetch('http://localhost:3000/ws/articles');
+    const json = await response.json();
+    assert.deepStrictEqual(response.status, 200);
+    assert(json);
+  });
+
   after(async () => {
     await server.stop();
   });

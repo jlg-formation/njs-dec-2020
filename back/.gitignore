@@ -4,6 +4,7 @@ toto.txt
 data/
 database.json
 pkg
-
+.nyc_output
+coverage
 
 
