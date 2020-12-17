@@ -2,7 +2,7 @@ import express from 'express';
 import http from 'http';
 import serveIndex from 'serve-index';
 import cors from 'cors';
-import {ws} from './ws';
+import {ws} from './ws-pg';
 
 export class Server {
   server!: http.Server;
