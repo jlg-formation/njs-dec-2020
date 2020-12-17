@@ -1,10 +1,13 @@
 import express from 'express';
+import {readFileSync} from 'fs';
+import {resolve} from 'path';
 import {Article} from './Article';
 
-let articles = [
-  {id: 'a1', name: 'Tournevis', price: 2.34, qty: 120},
-  {id: 'a2', name: 'Pince xxx', price: 2.55, qty: 55},
-];
+const filename = resolve(__dirname, '../data/articles.json');
+
+let articles = JSON.parse(
+  readFileSync(filename, {encoding: 'utf8'})
+) as Article[];
 
 let nextId = 3;
 
