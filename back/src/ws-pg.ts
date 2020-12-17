@@ -43,12 +43,23 @@ app.post('/articles', async (req, res) => {
   })();
 });
 
-// app.delete('/articles', async (req, res) => {
-//   const ids = req.body as string[];
-//   articles = articles.filter(a => !ids.includes(a.id));
-//   articles$.next(articles);
-//   res.status(204).end();
-// });
+app.delete('/articles', async (req, res) => {
+  const ids = req.body as string[];
+  (async () => {
+    try {
+      await client.query(
+        `DELETE FROM articles WHERE id in (${ids
+          .map((n, i) => '$' + (i + 1))
+          .join(',')})`,
+        ids
+      );
+      res.status(204).end();
+    } catch (error) {
+      console.log('error: ', error);
+      res.status(500).end();
+    }
+  })();
+});
 
 app.get('/date', (req, res) => {
   res.json({date: new Date()});
