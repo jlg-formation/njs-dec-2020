@@ -2,11 +2,7 @@ import express from 'express';
 import http from 'http';
 import serveIndex from 'serve-index';
 import cors from 'cors';
-
-const articles = [
-  {name: 'Tournevis', price: 2.34, qty: 120},
-  {name: 'Pince xxx', price: 2.55, qty: 55},
-];
+import {ws} from './ws';
 
 export class Server {
   server!: http.Server;
@@ -22,13 +18,7 @@ export class Server {
       next();
     });
 
-    app.get('/ws/articles', (req, res) => {
-      res.json(articles);
-    });
-
-    app.get('/ws/date', (req, res) => {
-      res.json({date: new Date()});
-    });
+    app.use('/ws', ws);
 
     app.use(express.static(www));
     app.use(serveIndex(www));
